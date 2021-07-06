@@ -1,0 +1,4159 @@
+body {
+  font-family: sans-serif,serif;
+  margin: 0;
+  padding: 0;
+  background-color: #37d7ff;
+}
+
+input {
+  display: none;
+}
+
+#board {
+  width: 500px;/*500px*/
+  height: 500px;
+  position: absolute;
+  background: rgb(195, 226, 145);
+  border: 20px solid rgb(18, 126, 111);
+  transform: scale(1,1);
+  z-index: 1;
+}
+
+#menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: rgb(52, 192, 76);
+  z-index: 5;
+}
+
+#background-interface {
+  width: 80%;
+  height: 85vh;/*90vh*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgb(64, 168, 228);
+  border-radius: 1%;
+  z-index: 1;
+}
+
+#score {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  display: none;
+}
+
+#debugOutp {
+  background-color: rgb(126, 50, 226);
+  width: 300px;
+  height: 350px;
+  margin: 0px 0px 80px 0px;
+  padding: 10px;
+  position: static;
+  border: 8px solid rgb(182, 249, 252);
+  border-radius: 2%;
+  z-index: 0;
+}
+
+.scoreOutp {
+  font-size: 45px;
+  padding: 5%;
+}
+
+#buttons {
+  display: none;
+  position: absolute;
+  width: 350px;
+  height: 240px;
+  bottom: 20%;
+  right: 28%;
+  transform: scale(2,2);
+}
+
+#butU {
+  position: absolute;
+  top: 1%;
+  right: 43%;
+}
+
+#butR {
+  position: absolute;
+  top: 32%;
+  right: 16%;
+  text-indent: 8px;
+}
+
+#butD {
+  position: absolute;
+  bottom: -8%;
+  right: 43%;
+}
+
+#butL {
+  position: absolute;
+  top: 32%;
+  right: 70%;
+  text-indent: -8px;
+}
+
+.mbuttonsection {
+  width: 80%;
+  bottom: 10%;
+  left: 9%;
+  height: auto;
+  display: flex;
+  position: absolute;
+  margin: 1% 0;
+}
+
+#logo {
+  position: absolute;
+  top: 2%;
+  right: 25%;
+  width: 50%;
+  height: 40%;
+}
+
+#tutorial {
+  position: absolute;
+  top: 2%;
+  right: 25%;
+  width: 50%;
+  height: 40%;
+}
+
+#firstMenuSection {
+  display: block;
+}
+
+#secondMenuSection {
+  display: none;
+  width: 100%;
+  height: 60%;
+}
+
+#thirdMenuSection {
+  display: none;
+}
+
+#toggleButt {
+  margin: 1% auto;
+  padding: 2%;
+  width: 400px;
+  background-color: rgb(248, 56, 56);
+  border-radius: 35px;
+  box-shadow:
+  inset 0 1px 3px 0 rgba(255, 4, 4, 0.35),
+  0 2px 1px 0 rgba(197, 89, 89, 0.9),
+  0 5px 5px 0 rgb(185, 23, 23);
+}
+
+#toggleButt p {
+  font-size: 60px;
+  font-weight: 900;
+  display: flex;
+  padding: 8%;
+  color: rgb(131, 53, 8);
+  text-shadow:
+  0 -2px 1px rgb(185, 23, 23),
+  0 -4px 1px rgba(238, 176, 185, 0.719),
+  0 -5px 1px rgb(197, 38, 38);
+}
+
+
+.btn {
+  position: relative;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin-right: 40px;
+  width: 48px;
+  height: 100px;
+  border: 3px solid rgb(160, 175, 124);
+  border-top: none;
+  border-radius: 6px;
+  background: #d3f0d9;
+  box-shadow: inset 0 -30px 15px -3px #dac2ae;
+  cursor: pointer;
+}
+
+input:checked + .btn:before {
+  background-position: 0 200px;
+}
+
+input:checked + .btn .y {
+  top: 54px;
+}
+
+.btn:before {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  display: block;
+  width: 40px;
+  height: 91px;
+  border-bottom: 1px solid #fff;
+  border-radius: 8px;
+  background: #cee7eb;
+  background: linear-gradient(to bottom, #cdfd1f 2%, #cdfd1f 23%, #bafd1f 48%, #f3e8dd 51%, #f3e8dd 79%, #ead6c8 100%);
+  background-position: 0 100px;
+  background-size: 40px 220px;
+  box-shadow: inset 0 0 7px 0 rgba(0, 0, 0, 0.05), inset 0 4px 7px -2px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.7), 0 0 5px rgba(255, 255, 255, 0.7);
+  content: "";
+  transition: background-position 0.4s cubic-bezier(0.54, 0.66, 0.8, 0.16);
+}
+
+.btn .y {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #BBAAA0;
+  border-radius: 8px;
+  background: #ecebb2;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.4), inset 0 -5px 7px rgba(0, 0, 0, 0.2), inset 0 -2px 3px rgba(255, 255, 255, 0.3), inset 0 7px 5px rgba(255, 255, 255, 0.8), 0 6px 8px rgba(0, 0, 0, 0.4), 0 2px 3px rgba(0, 0, 0, 0.35);
+  transition: top 0.4s cubic-bezier(0.54, 0.66, 0.8, 0.16);
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  background-color: #37d7ff;
+}
+
+.flex-container > div {
+  color: rgb(219, 244, 250);
+  margin: 20px 20px 20px 20px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 30px;
+  padding: 20px;
+}
+
+.hoboImg {
+  font-family: monospace;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  text-align: center;
+}
+
+.hoboImg p {
+  margin: 5%;
+}
+
+#transition {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation-name: endtrans;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes endtrans {
+  0% {-webkit-backdrop-filter: grayscale(0%) blur(0px) brightness(100%); backdrop-filter: grayscale(0%) blur(0px) brightness(100%);}
+  100% {-webkit-backdrop-filter: grayscale(100%) blur(3px) brightness(75%); backdrop-filter: grayscale(100%) blur(3px) brightness(75%);}
+}
+
+#endScore {
+  display: none;
+  z-index: 5;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 90px;
+  color: #f0d8d8;
+  text-transform:uppercase;
+  text-shadow: 0px 0px 21px rgb(255, 212, 19), 0 0 45px rgb(219, 200, 116);
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  -webkit-filter: opacity(0%);
+  filter: opacity(0%);
+  animation-name: scorePop;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scorePop {
+  0% {-webkit-filter: opacity(0%); filter: opacity(0%);}
+  100% {-webkit-filter: opacity(100%); filter: opacity(100%);}
+}
+
+#hideScoreBut {
+  display: none;
+  z-index: 3;
+  position: absolute;
+  bottom: 13%;
+  left: 38%;
+  -webkit-filter: opacity(0%);
+  filter: opacity(0%);
+  animation-name: scorePop;
+  animation-duration: 0.5s;
+  animation-delay: 3s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+#menuPause {
+  position: absolute;
+  font-size: 30px;
+  bottom: 15%;
+  right: 4%;
+}
+
+#startButton {
+  display: block;
+}
+
+#resumeButton {
+  display: none;
+}
+
+.empty {
+  width: 1px;
+  height: 1px;
+  margin: 5px 2.5px 5px 2.5px;
+  position: absolute;
+  border-radius: 50px;
+  z-index: 0;
+}
+
+.stop {
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  background-image: url("../img/stop.png");
+  position: absolute;
+  border-radius: 7px;
+  z-index: 4;
+}
+
+.apple {
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  background-image: url("../img/apple.png");
+  position: absolute;
+  border-radius: 7px;
+  z-index: 2;
+}
+
+.slW {
+  width: 20px;
+  height: 15px;
+  margin: 5px 2.5px 5px 2.5px;
+  position: absolute;
+  background-image: url("../img/snake_small.png");
+  z-index: 3;
+}
+
+.slN {
+  width: 20px;
+  height: 15px;
+  margin: 5px 2.5px 5px 2.5px;
+  position: absolute;
+  background-image: url("../img/snake_small.png");
+  transform: rotate(90deg);
+  z-index: 3;
+}
+
+.slE {
+  width: 20px;
+  height: 15px;
+  margin: 5px 2.5px 5px 2.5px;
+  position: absolute;
+  background-image: url("../img/snake_small.png");
+  transform: rotate(180deg);
+  z-index: 3;
+}
+
+.slS {
+  width: 20px;
+  height: 15px;
+  margin: 5px 2.5px 5px 2.5px;
+  position: absolute;
+  background-image: url("../img/snake_small.png");
+  transform: rotate(270deg);
+  z-index: 3;
+}
+
+.shW {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  margin: -0.15px 0px 0px 2px;
+  background-image: url("../img/snake_head.png");
+  z-index: 3;
+}
+
+.shN {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  margin: 2px 0px 0px 0.25px;
+  background-image: url("../img/snake_head.png");
+  transform: rotate(90deg);
+  z-index: 3;
+}
+
+.shE {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  margin: 0px 0px 0px -2px;
+  background-image: url("../img/snake_head.png");
+  transform: rotate(180deg);
+  z-index: 3;
+}
+
+.shS {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  margin: -2px 0px 0px 0px;
+  background-image: url("../img/snake_head.png");
+  transform: rotate(270deg);
+  z-index: 3;
+}
+
+.stW {
+  width: 25px;
+  height: 25px;
+  margin: 0px 0px 0px -1px;
+  position: absolute;
+  background-image: url("../img/snake_tail.png");
+  z-index: 3;
+}
+
+.stN {
+  width: 25px;
+  height: 25px;
+  margin: -1px 0px 0px 0.25px;
+  position: absolute;
+  background-image: url("../img/snake_tail.png");
+  transform: rotate(90deg);
+  z-index: 3;
+}
+
+.stE {
+  width: 25px;
+  height: 25px;
+  margin: 0px 0px 0px 1px;
+  position: absolute;
+  background-image: url("../img/snake_tail.png");
+  transform: rotate(180deg);
+  z-index: 3;
+}
+
+.stS {
+  width: 25px;
+  height: 25px;
+  margin: 1px 0px 0px 0px;
+  position: absolute;
+  background-image: url("../img/snake_tail.png");
+  transform: rotate(270deg);
+  z-index: 3;
+}
+
+.sbH {
+  width: 25px;
+  height: 17px;
+  margin: 4px 2.5px 5px 0px;
+  position: absolute;
+  background-color: rgb(56, 91, 92);
+  border-radius: 3px 3px 3px 3px;
+  z-index: 3;
+}
+
+.sbV {
+  width: 17px;
+  height: 25px;
+  margin: 0px 2.5px 5px 4px;
+  position: absolute;
+  background-color: rgb(56, 91, 92);
+  border-radius: 3px 3px 3px 3px;
+  z-index: 3;
+}
+
+.scWN {
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  background-color: rgb(56, 91, 92);
+  border-radius: 10px 0px 10px 0px;
+  z-index: 3;
+}
+
+.scNE {
+  width: 21px;
+  height: 21px;
+  margin: 0px 0px 0px 5px;
+  position: absolute;
+  background-color: rgb(56, 91, 92);
+  border-radius: 0px 10px 0px 10px;
+  z-index: 3;
+}
+
+.scES {
+  width: 21px;
+  height: 21px;
+  margin: 4px 0px 0px 4px;
+  position: absolute;
+  background-color: rgb(56, 91, 92);
+  border-radius: 10px 0px 10px 0px;
+  z-index: 3;
+}
+
+.scSW {
+  width: 21px;
+  height: 21px;
+  margin: 4px 0px 0px 0px;
+  position: absolute;
+  background-color: rgb(56, 91, 92);
+  border-radius: 0px 10px 0px 10px;
+  z-index: 3;
+}
+
+.arcade{
+  font-weight:1000;
+  text-transform:uppercase;
+  text-decoration:none;
+  color: rgba(130, 228, 106, 0);
+  font-size:30px;
+  text-shadow:
+    0 -2px 1px rgb(185, 23, 23),
+    0 -4px 1px rgba(238, 176, 185, 0.719),
+    0 -5px 1px rgb(197, 38, 38);
+  position:relative;
+  display:block;
+  width: 2.100em;
+  height:2.100em;
+  margin: 2.000em auto 0;
+  line-height: 2.000em;
+  text-align:center;
+  border-radius: 50%;
+  background: rgb(248, 56, 56);
+  background-image:
+    radial-gradient(ellipse closest-side,
+    rgb(255, 255, 255) 25%,
+    rgb(247, 216, 216) 60%,
+    rgb(241, 205, 205) 80%);
+  background-position: center;
+  box-shadow:
+    0 -3px 1px 1px rgba(247, 101, 101, 0.733),
+    0 -7px 8px 9px rgba(247, 47, 47, 0.8),
+    0 1px 6px 2px rgba(240, 43, 43, 0.7),
+    0 1px 0px 10px rgb(223, 34, 34),
+    inset 0 10px 22px -7px rgba(0,0,0,0.2),
+    inset 0 -5px 7px 5px rgba(233, 46, 46, 0.918),
+    inset 0 35px 25px -5px rgb(245, 35, 35),
+    inset 0 75px 10px -7px rgba(253, 26, 26, 0.8),
+    0 -2px 1px 10px rgba(255, 28, 28, 0.35),
+    0 12px 14px 5px rgba(255, 18, 18, 0.2),
+    0 14px 16px 0px rgba(255, 8, 8, 0.2),
+    0 20px 20px 10px rgba(255, 17, 17, 0.15);
+  
+  transition: all 0.07s ease-in;
+    
+}
+
+.arcade:before{
+  position:absolute;
+  display:block;
+  content:"";
+  top:0;
+  left:0;
+  margin: -0.650em;
+  width:3.457em;
+  height:3.457em;
+  border-radius:inherit;
+  background:rgb(214, 36, 36);
+  background-image:
+    linear-gradient(top,
+    rgb(255, 31, 31) 0%,
+    rgb(255, 22, 22) 100%);
+  z-index:-1;
+  box-shadow:
+  inset 0 1px 3px 0 rgba(255, 4, 4, 0.35),
+  0 2px 1px 0 rgba(197, 89, 89, 0.9),
+  0 5px 5px 0 rgb(7, 247, 255);
+}
+
+.arcade:after{
+  position:absolute;
+  display:block;
+  content:"";
+  top:0;
+  left:0;
+  margin: -0.550em;
+  width:3.200em;
+  height:3.200em;
+  border-radius:inherit;
+  background-image:
+    linear-gradient(top,
+    rgb(92, 250, 53) 0%,
+    rgb(60, 161, 255) 100%);
+  z-index:-1;
+  box-shadow: 
+    inset 0px -5px 10px 0 rgba(245, 22, 22, 0.4),
+    inset 0 -2px 5px 0 rgba(0,0,0,0.20),
+    inset 4px -2px 1px 0 rgba(204, 53, 53, 0.8),
+    0 0px 2px 0 rgba(0, 0, 0, 0.3),
+    0 3px 6px 0 rgba(0, 0, 0, 0.2),
+    0 8px 14px 0 rgba(0,0,0,0.20),
+    0 15px 20px 0 rgba(0,0,0,0.40);
+}
+.arcade:active{
+  box-shadow: 
+    0 -3px 1px 0px rgba(247, 19, 19, 0.6),
+    0 -7px 8px 9px rgba(233, 46, 46, 0.8),
+    0 1px 6px 5px rgba(247, 47, 47, 0.7),
+    0 1px 0px 10px rgb(255, 29, 40),
+    inset 0 10px 22px -7px rgba(110, 26, 26, 0.87),
+    inset 0 -5px 7px 5px rgba(255, 40, 25, 0.9),
+    inset 0 35px 25px -5px rgb(255, 28, 58),
+    inset 0 75px 10px -7px rgba(247, 65, 80, 0.8),
+    0 -2px 1px 10px rgba(255, 6, 6, 0.966),
+    0 5px 10px 8px rgba(199, 144, 144, 0.76),
+    0 0px 10px 9px rgba(201, 129, 129, 0.562),
+    0 5px 20px 0px rgba(211, 92, 92, 0.445);
+}
+
+/*-----------------*/
+
+.mbutton{
+  font-family: sans-serif, serif;
+  text-transform:uppercase;
+  text-decoration:none;
+  color: rgb(131, 53, 8);
+  font-size:50px;
+  text-shadow:
+    0 -2px 1px rgb(185, 23, 23),
+    0 -4px 1px rgba(238, 176, 185, 0.719),
+    0 -5px 1px rgb(197, 38, 38);
+  position:relative;
+  display:block;
+  width: 6.000em;
+  height:2.000em;
+  margin: 1.000em auto 0;
+  line-height: 1.800em;
+  text-align:center;
+  border-radius: 40px;
+  background: rgb(248, 56, 56);
+  background-image:
+    radial-gradient(ellipse closest-side at 50% 20%,
+    rgb(255, 255, 255) 25%,
+    rgb(247, 216, 216) 60%,
+    rgb(245, 218, 218) 61%,
+    rgb(243, 194, 194) 65%,
+    rgb(243, 212, 212) 75%,
+    rgb(187, 55, 55) 81%,
+    rgb(212, 52, 60) 83%);
+  background-position: top;
+  box-shadow:
+    0 -3px 1px 1px rgba(247, 101, 101, 0.733),
+    0 4px 8px 9px rgba(247, 47, 47, 0.8),
+    0 1px 6px 2px rgba(240, 43, 43, 0.7),
+    0 1px 0px 10px rgb(223, 34, 34),
+    inset 0 10px 22px -7px rgba(0,0,0,0.2),
+    inset 0 -5px 7px 5px rgba(233, 46, 46, 0.918),
+    inset 0 15px 25px -5px rgb(245, 35, 35),
+    inset 0 55px 10px -7px rgba(253, 26, 26, 0.8),
+    0 -2px 1px 10px rgba(255, 28, 28, 0.35),
+    0 12px 14px 5px rgba(255, 18, 18, 0.2),
+    0 14px 16px 0px rgba(255, 8, 8, 0.2),
+    0 20px 20px 10px rgba(255, 17, 17, 0.15);
+  
+  transition: all 0.07s ease-in;
+}
+
+.mbutton:active{
+  box-shadow: 
+    0 -3px 1px 0px rgba(247, 19, 19, 0.6),
+    0 -7px 8px 9px rgba(233, 46, 46, 0.8),
+    0 1px 6px 5px rgba(247, 47, 47, 0.7),
+    0 1px 0px 10px rgb(255, 29, 40),
+    inset 0 10px 22px -7px rgba(110, 26, 26, 0.87),
+    inset 0 -5px 7px 5px rgba(255, 40, 25, 0.9),
+    inset 0 35px 25px -5px rgb(255, 28, 58),
+    inset 0 75px 10px -7px rgba(247, 65, 80, 0.8),
+    0 -2px 1px 10px rgba(255, 6, 6, 0.966),
+    0 5px 10px 8px rgba(199, 144, 144, 0.76),
+    0 0px 10px 9px rgba(201, 129, 129, 0.562),
+    0 5px 20px 0px rgba(211, 92, 92, 0.445);
+}
+
+/***********************************************/
+/*                MOBILE RESPONSE              */
+/***********************************************/
+
+@media screen and (min-width: 280px) and (min-height: 653px) and (hover: none) {/*S FOLD ONE-SIDE PORTR*/
+  #board {
+    -webkit-transform: scale(0.45,0.45);
+    -o-transform: scale(0.45,0.45);
+    -moz-transform: scale(0.45,0.45);
+    -ms-transform: scale(0.45,0.45);
+    transform: scale(0.45,0.45);
+  }
+  #background-interface {
+    height: 280px;
+    width: 260px;
+  }
+  #score {
+    display: block;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: -1%;
+    right: -25%;
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 35%;
+    right: 6%;
+    font-size: 10px;
+  }
+  #menu .mbutton{
+    font-size: 15px;
+  }
+  #hideScoreBut {
+    font-size: 15px;
+    bottom: 45%;
+  }
+  #endScore {
+    top: 10%;
+    font-size: 40px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    top: -2%;
+  }
+  #snakeLogo {
+    position: absolute;
+    top: 35%;
+    width: 185%;
+    right: -43%;
+  }
+  #tutorial {
+    width: 95%;
+    left: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    position: absolute;
+    right: -23%;
+  }
+}
+
+@media screen and (min-width: 653px) and (min-height: 280px) and (hover: none) {/*S FOLD ONE-SIDE LAND*/
+  #board {
+    -webkit-transform: scale(0.4,0.4);
+    -o-transform: scale(0.4,0.4);
+    -moz-transform: scale(0.4,0.4);
+    -ms-transform: scale(0.4,0.4);
+    transform: scale(0.4,0.4);
+    bottom: -66%;
+  }
+  #background-interface {
+    height: 200px;
+    width: 250px;
+  }
+  #score {
+    display: block;
+    font-size: 15px;
+    top: -5px;
+  }
+  #buttons {
+    display: block;
+    bottom: -1%;
+    right: 0%;
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    right: 6%;
+    font-size: 10px;
+  }
+  #menu .mbutton{
+    font-size: 15px;
+  }
+  #hideScoreBut {
+    font-size: 15px;
+    bottom: 15%;
+  }
+  #endScore {
+    top: 15%;
+    font-size: 50px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    top: -2%;
+  }
+  #snakeLogo {
+    position: absolute;
+    top: 2%;
+    width: 115%;
+    right: -15%;
+  }
+  #tutorial {
+    width: 45%;
+    left: 28%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    position: absolute;
+    right: 18%;
+    bottom: 5%;
+  }
+}
+
+@media screen and (min-width: 512px) and (min-height: 717px) and (hover: none) {/*S FOLD DUAL-SIDE PORTR*/
+  #board {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    top: -8%;
+  }
+  #background-interface {
+    height: 400px;
+  }
+  #score {
+    display: block;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: -1%;
+    right: 25%;
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 28%;
+    right: 6%;
+    font-size: 20px;
+  }
+  #menu .mbutton{
+    font-size: 25px;
+  }
+  #hideScoreBut {
+    font-size: 25px;
+    bottom: 45%;
+  }
+  #endScore {
+    top: 25%;
+    font-size: 42px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    top: 3%;
+  }
+  #snakeLogo {
+    position: absolute;
+    top: 35%;
+    width: 185%;
+    right: -43%;
+  }
+  #tutorial {
+    width: 95%;
+    left: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    position: absolute;
+    right: -20%;
+  }
+}
+
+@media screen and (min-width: 717px) and (min-height: 512px) and (hover: none) {/*S FOLD DUAL-SIDE LAND*/
+  #board {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    bottom: -20%;
+  }
+  #background-interface {
+    height: 350px;
+    width: 300px;
+  }
+  #score {
+    display: block;
+    font-size: 25px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 15%;
+    right: -5%;
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 2%;
+    right: 6%;
+    font-size: 20px;
+  }
+  #menu .mbutton{
+    font-size: 25px;
+  }
+  #hideScoreBut {
+    font-size: 25px;
+    bottom: 25%;
+    left: 10%;
+  }
+  #endScore {
+    top: 25%;
+    font-size: 55px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    top: 3%;
+  }
+  #snakeLogo {
+    top: 0%;
+    width: 195%;
+    right: -33%;
+  }
+  #tutorial {
+    width: 85%;
+    left: 10%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    right: 20%;
+    bottom: 25%;
+  }
+}
+
+@media screen and (min-width: 540px) and (min-height: 720px) and (hover: none) {/*SURFACE DUO ONE-SIDE PORTR*/
+  #board {
+    -webkit-transform: scale(0.72,0.72);
+    -o-transform: scale(0.72,0.72);
+    -moz-transform: scale(0.72,0.72);
+    -ms-transform: scale(0.72,0.72);
+    transform: scale(0.72,0.72);
+  }
+  #background-interface {
+    height: 420px;
+  }
+  #score {
+    display: block;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: -1%;
+    right: 11%;
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 25%;
+    font-size: 15px;
+  }
+  #menu .mbutton{
+    font-size: 25px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 40%;
+    right: 40%;
+  }
+  #endScore {
+    font-size: 42px;
+    top: 30%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+  }
+  #snakeLogo {
+    width: 185%;
+    right: -45%;
+  }
+  #tutorial {
+    width: 85%;
+    left: 12%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    position: absolute;
+    right: 12%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 720px) and (min-height: 540px) and (hover: none) {/*SURFACE DUO ONE-SIDE LAND*/
+  #board {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    top: -45%;
+    
+  }
+  #background-interface {
+    height: 230px;
+    width: 700px;
+  }
+  #score {
+    display: block;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: -1%;
+    right: 20%;
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 25%;
+    font-size: 15px;
+  }
+  #menu .mbutton{
+    font-size: 25px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 20%;
+    right: -25%;
+  }
+  #endScore {
+    font-size: 60px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+  }
+  #snakeLogo {
+    width: 120%;
+  }
+  #tutorial {
+    width: 85%;
+    left: 12%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    position: absolute;
+    right: 20%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 320px) and (min-height: 568px) and (hover: none) {/*IPHONE 5/SE PORTR*/
+  #board {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    top: -37%;
+    
+  }
+  #background-interface {
+    height: 260px;
+    width: 240px;
+  }
+  #score {
+    display: block;
+    font-size: 20px;
+    top: -3px;
+  }
+  #buttons {
+    display: block;
+    bottom: 1%;
+    right: -10%;
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 36%;
+    font-size: 10px;
+  }
+  #menu .mbutton{
+    font-size: 15px;
+  }
+  #hideScoreBut {
+    font-size: 15px;
+    bottom: 50%;
+    right: 5%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 30px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    top: 1%;
+  }
+  #snakeLogo {
+    position: relative;
+    top: 35%;
+    width: 150%;
+    left: -25%;
+  }
+  #tutorial {
+    width: 93%;
+    left: 6%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    position: absolute;
+    left: -15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 568px) and (min-height: 320px) and (hover: none) {/*IPHONE 5/SE LAND*/
+  #board {
+    -webkit-transform: scale(0.49,0.49);
+    -o-transform: scale(0.49,0.49);
+    -moz-transform: scale(0.49,0.49);
+    -ms-transform: scale(0.49,0.49);
+    transform: scale(0.49,0.49);
+    top: -43%;
+    
+  }
+  #background-interface {
+    height: 240px;
+    width: 250px;
+  }
+  #score {
+    display: block;
+    font-size: 17px;
+    top: -8px;
+  }
+  #buttons {
+    display: block;
+    bottom: 3%;
+    right: -15%;
+    -webkit-transform: scale(0.65,0.65);
+    -o-transform: scale(0.65,0.65);
+    -moz-transform: scale(0.65,0.65);
+    -ms-transform: scale(0.65,0.65);
+    transform: scale(0.65,0.65);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 10px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 15px;
+    bottom: 25%;
+    left: 15%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 50px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.7,0.7);
+    -o-transform: scale(0.7,0.7);
+    -moz-transform: scale(0.7,0.7);
+    -ms-transform: scale(0.7,0.7);
+    transform: scale(0.7,0.7);
+    top: 2%;
+  }
+  #snakeLogo {
+    top: 35%;
+    width: 110%;
+    left: -25%;
+  }
+  #tutorial {
+    width: 65%;
+    left: 23%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    position: absolute;
+    left: 12%;
+    bottom: 20%;
+  }
+}
+
+@media screen and (min-width: 375px) and (min-height: 667px) and (hover: none) {/*IPHONE 6/7/8 PORTR*/
+  #board {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    top: -22%;
+    
+  }
+  #background-interface {
+    height: 320px;
+    width: 300px;
+  }
+  #score {
+    display: block;
+    font-size: 22px;
+    top: 0px;
+  }
+  #buttons {
+    display: block;
+    bottom: 5%;
+    right: 2%;
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 35%;
+    font-size: 13px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 50%;
+    right: 5%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 35px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 145%;
+  }
+  #tutorial {
+    width: 93%;
+    left: 6%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    position: absolute;
+    left: -22%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 667px) and (min-height: 375px) and (hover: none) {/*IPHONE 6/7/8 LAND*/
+  #board {
+    -webkit-transform: scale(0.55,0.55);
+    -o-transform: scale(0.55,0.55);
+    -moz-transform: scale(0.55,0.55);
+    -ms-transform: scale(0.55,0.55);
+    transform: scale(0.55,0.55);
+    top: -28%;
+    
+  }
+  #background-interface {
+    height: 290px;
+    width: 270px;
+  }
+  #score {
+    display: block;
+    font-size: 25px;
+    top: 0px;
+  }
+  #buttons {
+    display: block;
+    bottom: 8%;
+    right: -5%;
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 13px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 25%;
+    left: 15%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 60px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 115%;
+  }
+  #tutorial {
+    width: 55%;
+    left: 25%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    position: absolute;
+    left: 15%;
+    bottom: 25%;
+  }
+}
+
+@media screen and (min-width: 414px) and (min-height: 736px) and (hover: none) {/*IPHONE 6/7/8 PLUS PORTR*/
+  #board {
+    -webkit-transform: scale(0.65,0.65);
+    -o-transform: scale(0.65,0.65);
+    -moz-transform: scale(0.65,0.65);
+    -ms-transform: scale(0.65,0.65);
+    transform: scale(0.65,0.65);
+    top: -15%;
+    
+  }
+  #background-interface {
+    height: 350px;
+    width: 350px;
+  }
+  #score {
+    display: block;
+    font-size: 30px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 5%;
+    right: 2%;
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 35%;
+    font-size: 15px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 50%;
+    right: 5%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 40px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 165%;
+  }
+  #tutorial {
+    width: 93%;
+    left: 6%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    position: absolute;
+    left: -22%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 736px) and (min-height: 414px) and (hover: none) {/*IPHONE 6/7/8 PLUS LAND*/
+  #board {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    top: -22%;
+    
+  }
+  #background-interface {
+    height: 320px;
+    width: 320px;
+  }
+  #score {
+    display: block;
+    font-size: 25px;
+    top: 0px;
+  }
+  #buttons {
+    display: block;
+    bottom: 8%;
+    right: -5%;
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 15px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 25%;
+    left: 15%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 65px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 115%;
+  }
+  #tutorial {
+    width: 55%;
+    left: 25%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    position: absolute;
+    left: 15%;
+    bottom: 25%;
+  }
+}
+
+@media screen and (min-width: 375px) and (min-height: 812px) and (hover: none) {/*IPHONE X PORTR*/
+  #board {
+    -webkit-transform: scale(0.6,0.6);
+    -o-transform: scale(0.6,0.6);
+    -moz-transform: scale(0.6,0.6);
+    -ms-transform: scale(0.6,0.6);
+    transform: scale(0.6,0.6);
+    top: -8%;
+    
+  }
+  #background-interface {
+    height: 400px;
+    width: 300px;
+  }
+  #score {
+    display: block;
+    font-size: 40px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 5%;
+    right: 2%;
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 35%;
+    font-size: 15px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 50%;
+    right: 5%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 35px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 165%;
+  }
+  #tutorial {
+    width: 93%;
+    left: 6%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    position: absolute;
+    left: -22%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 812px) and (min-height: 375px) and (hover: none) {/*IPHONE X LAND*/
+  #board {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    top: -25%;
+    
+  }
+  #background-interface {
+    height: 290px;
+    width: 300px;
+  }
+  #score {
+    display: block;
+    font-size: 40px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 8%;
+    right: 10%;
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 15px;
+  }
+  #menu .mbutton{
+    font-size: 20px;
+  }
+  #hideScoreBut {
+    font-size: 20px;
+    bottom: 25%;
+    left: 15%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 65px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 115%;
+  }
+  #tutorial {
+    width: 55%;
+    left: 25%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(0.5,0.5);
+    -o-transform: scale(0.5,0.5);
+    -moz-transform: scale(0.5,0.5);
+    -ms-transform: scale(0.5,0.5);
+    transform: scale(0.5,0.5);
+    position: absolute;
+    left: 15%;
+    bottom: 25%;
+  }
+}
+
+@media screen and (min-width: 720px) and (min-height: 1114px) and (hover: none) {/*SURFACE DUO DUAL-SIDE PORTR*/
+  #board {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: -1%;
+    
+  }
+  #background-interface {
+    height: 450px;
+    width: 700px;
+  }
+  #score {
+    display: block;
+    font-size: 45px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 15%;
+    right: 20%;
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 50%;
+    font-size: 25px;
+  }
+  #menu .mbutton{
+    font-size: 40px;
+  }
+  #hideScoreBut {
+    font-size: 30px;
+    bottom: 40%;
+    right: -25%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 60px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(0.8,0.8);
+    -o-transform: scale(0.8,0.8);
+    -moz-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    top: 1%;
+  }
+  #snakeLogo {
+    width: 165%;
+  }
+  #tutorial {
+    width: 95%;
+    left: 8%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: 20%;
+    bottom: 55%;
+  }
+}
+
+@media screen and (min-width: 1114px) and (min-height: 720px) and (hover: none) {/*SURFACE DUO DUAL-SIDE LAND*/
+  #board {
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+    top: 5%;
+    
+  }
+  #background-interface {
+    height: 600px;
+    width: 450px;
+  }
+  #score {
+    display: block;
+    font-size: 45px;
+    top: 15px;
+  }
+  #buttons {
+    display: block;
+    bottom: 15%;
+    right: 10%;
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 60%;
+    font-size: 25px;
+  }
+  #menu .mbutton{
+    font-size: 30px;
+  }
+  #hideScoreBut {
+    font-size: 30px;
+    bottom: 35%;
+    left: -75%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 45px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    top: 3%;
+  }
+  #snakeLogo {
+    width: 165%;
+  }
+  #tutorial {
+    width: 80%;
+    left: 8%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: 20%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 720px) and (min-height: 1440px) and (hover: none) {/*MOTO G6 PLAY PORTR*/
+  #board {
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+    top: 15%;
+    
+  }
+  #background-interface {
+    height: 750px;
+    width: 700px;
+  }
+  #score {
+    display: block;
+    font-size: 45px;
+    top: 20px;
+  }
+  #buttons {
+    display: block;
+    bottom: 15%;
+    right: 20%;
+    -webkit-transform: scale(1.8,1.8);
+    -o-transform: scale(1.8,1.8);
+    -moz-transform: scale(1.8,1.8);
+    -ms-transform: scale(1.8,1.8);
+    transform: scale(1.8,1.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 57%;
+    font-size: 25px;
+  }
+  #menu .mbutton{
+    font-size: 40px;
+  }
+  #hideScoreBut {
+    font-size: 40px;
+    bottom: 50%;
+    right: -25%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 70px;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+    top: 2%;
+  }
+  #snakeLogo {
+    width: 150%;
+  }
+  #tutorial {
+    width: 95%;
+    left: 3%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1.5,1.5);
+    -o-transform: scale(1.5,1.5);
+    -moz-transform: scale(1.5,1.5);
+    -ms-transform: scale(1.5,1.5);
+    transform: scale(1.5,1.5);
+    position: absolute;
+    right: -20%;
+    bottom: 55%;
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-height: 720px) and (hover: none) {/*MOTO G6 PLAY LAND*/
+  #board {
+    -webkit-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+    top: 12%;
+    
+  }
+  #background-interface {
+    height: 620px;
+    width: 650px;
+  }
+  #score {
+    display: block;
+    font-size: 45px;
+    top: 10px;
+  }
+  #buttons {
+    display: block;
+    bottom: 30%;
+    right: 12%;
+    -webkit-transform: scale(1.8,1.8);
+    -o-transform: scale(1.8,1.8);
+    -moz-transform: scale(1.8,1.8);
+    -ms-transform: scale(1.8,1.8);
+    transform: scale(1.8,1.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    bottom: 60%;
+    font-size: 25px;
+  }
+  #menu .mbutton{
+    font-size: 30px;
+  }
+  #hideScoreBut {
+    font-size: 40px;
+    bottom: 25%;
+    left: -45%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 120px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    top: 3%;
+  }
+  #snakeLogo {
+    top: 5%;
+    left: -11%;
+    width: 130%;
+  }
+  #tutorial {
+    width: 64%;
+    left: 20%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: 20%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-height: 1024px) and (hover: none) {/*IPAD PORTR*/
+  #board {
+    -webkit-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+    top: 11%;
+    left: 5%;
+    
+  }
+  #background-interface {
+    height: 600px;
+    width: 560px;
+  }
+  #score {
+    display: block;
+    font-size: 35px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 8%;
+    right: 20%;
+    -webkit-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 15%;
+    font-size: 19px;
+    right: 2%;
+  }
+  #menu .mbutton{
+    font-size: 30px;
+  }
+  #hideScoreBut {
+    font-size: 30px;
+    bottom: 45%;
+    left: -35%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 75px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    top: 3%;
+  }
+  #snakeLogo {
+    top: 10%;
+    width: 145%;
+  }
+  #tutorial {
+    width: 95%;
+    left: 2%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: -20%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 768px) and (hover: none) {/*IPAD LAND*/
+  #board {
+    -webkit-transform: scale(0.9,0.9);
+    -o-transform: scale(0.9,0.9);
+    -moz-transform: scale(0.9,0.9);
+    -ms-transform: scale(0.9,0.9);
+    transform: scale(0.9,0.9);
+    top: 5%;
+    
+  }
+  #background-interface {
+    height: 600px;
+    width: 500px;
+  }
+  #score {
+    display: block;
+    font-size: 45px;
+    top: 15px;
+  }
+  #buttons {
+    display: block;
+    bottom: 10%;
+    right: 5%;
+    -webkit-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 15%;
+    font-size: 20px;
+  }
+  #menu .mbutton{
+    font-size: 30px;
+  }
+  #hideScoreBut {
+    font-size: 30px;
+    bottom: 45%;
+    left: -35%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 95px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    top: 3%;
+  }
+  #snakeLogo {
+    width: 145%;
+    top: 10%;
+  }
+  #tutorial {
+    width: 80%;
+    left: 13%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: 15%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 750px) and (min-height: 1334px) and (hover: none) {/*IPHONE SE 2GEN PORTR*/
+  #board {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    top: 16%;
+    left: 12%;
+    
+  }
+  #background-interface {
+    height: 700px;
+    width: 700px;
+  }
+  #score {
+    display: block;
+    font-size: 35px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 17%;
+    right: 20%;
+    -webkit-transform: scale(1.8,1.8);
+    -o-transform: scale(1.8,1.8);
+    -moz-transform: scale(1.8,1.8);
+    -ms-transform: scale(1.8,1.8);
+    transform: scale(1.8,1.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 57%;
+    font-size: 25px;
+    right: 2%;
+  }
+  #menu .mbutton{
+    font-size: 30px;
+  }
+  #hideScoreBut {
+    font-size: 40px;
+    bottom: 55%;
+    left: -35%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 70px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.5,1.5);
+    -o-transform: scale(1.5,1.5);
+    -moz-transform: scale(1.5,1.5);
+    -ms-transform: scale(1.5,1.5);
+    transform: scale(1.5,1.5);
+    top: 3%;
+  }
+  #snakeLogo {
+    top: 30%;
+    width: 145%;
+  }
+  #tutorial {
+    width: 95%;
+    left: 2%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: -20%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 1334px) and (min-height: 750px) and (hover: none) {/*IPHONE SE 2GEN LAND*/
+  #board {
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+    top: 14%;
+    left: 10%;
+    
+  }
+  #background-interface {
+    height: 650px;
+    width: 640px;
+  }
+  #score {
+    display: block;
+    font-size: 40px;
+    top: 5px;
+  }
+  #buttons {
+    display: block;
+    bottom: 35%;
+    right: 10%;
+    -webkit-transform: scale(1.7,1.7);
+    -o-transform: scale(1.7,1.7);
+    -moz-transform: scale(1.7,1.7);
+    -ms-transform: scale(1.7,1.7);
+    transform: scale(1.7,1.7);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 3%;
+    font-size: 25px;
+  }
+  #menu .mbutton{
+    font-size: 40px;
+  }
+  #hideScoreBut {
+    font-size: 40px;
+    bottom: 35%;
+    left: -35%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 120px;
+    left: 5%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.5,1.5);
+    -o-transform: scale(1.5,1.5);
+    -moz-transform: scale(1.5,1.5);
+    -ms-transform: scale(1.5,1.5);
+    transform: scale(1.5,1.5);
+    top: 5%;
+  }
+  #snakeLogo {
+    width: 145%;
+    top: 3%;
+  }
+  #tutorial {
+    width: 70%;
+    left: 18%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    position: absolute;
+    right: 15%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 1366px) and (hover: none) {/*IPAD PRO PORTR*/
+  #board {
+    -webkit-transform: scale(1.5,1.5);
+    -o-transform: scale(1.5,1.5);
+    -moz-transform: scale(1.5,1.5);
+    -ms-transform: scale(1.5,1.5);
+    transform: scale(1.5,1.5);
+    top: 23%;
+    left: 20%;
+    
+  }
+  #background-interface {
+    height: 850px;
+    width: 1200px;
+  }
+  #score {
+    display: block;
+    font-size: 55px;
+    top: 15px;
+  }
+  #buttons {
+    display: block;
+    bottom: 10%;
+    right: 25%;
+    -webkit-transform: scale(1.5,1.5);
+    -o-transform: scale(1.5,1.5);
+    -moz-transform: scale(1.5,1.5);
+    -ms-transform: scale(1.5,1.5);
+    transform: scale(1.5,1.5);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 66%;
+    font-size: 30px;
+  }
+  #menu .mbutton{
+    font-size: 50px;
+  }
+  #hideScoreBut {
+    font-size: 45px;
+    bottom: 45%;
+    right: 15%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 90px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    top: 5%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 145%;
+    left: -25%;
+    top: 15%;
+  }
+  #tutorial {
+    width: 90%;
+    left: 8%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    position: absolute;
+    right: 30%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 1366px) and (min-height: 1024px) and (hover: none) {/*IPAD PRO LAND*/
+  #board {
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+    top: 10%;
+    left: 20%;
+    
+  }
+  #background-interface {
+    height: 650px;
+    width: 1200px;
+  }
+  #score {
+    display: block;
+    font-size: 55px;
+    top: 15px;
+  }
+  #buttons {
+    display: block;
+    bottom: 5%;
+    right: 40%;
+    -webkit-transform: scale(1,1);
+    -o-transform: scale(1,1);
+    -moz-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 75%;
+    font-size: 30px;
+  }
+  #menu .mbutton{
+    font-size: 50px;
+  }
+  #hideScoreBut {
+    font-size: 45px;
+    bottom: 40%;
+    right: -65%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 120px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    top: 5%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 145%;
+    left: -25%;
+    top: 15%;
+  }
+  #tutorial {
+    width: 90%;
+    left: 8%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    position: absolute;
+    right: 30%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 828px) and (min-height: 1792px) and (hover: none) {/*IPHONE 11 PORTR*/
+  #board {
+    -webkit-transform: scale(1.45,1.45);
+    -o-transform: scale(1.45,1.45);
+    -moz-transform: scale(1.45,1.45);
+    -ms-transform: scale(1.45,1.45);
+    transform: scale(1.45,1.45);
+    top: 23%;
+    left: 16%;
+    
+  }
+  #background-interface {
+    height: 850px;
+    width: 1200px;
+  }
+  #score {
+    display: block;
+    font-size: 55px;
+    top: 15px;
+  }
+  #buttons {
+    display: block;
+    bottom: 25%;
+    right: 27%;
+    -webkit-transform: scale(2.2,2.2);
+    -o-transform: scale(2.2,2.2);
+    -moz-transform: scale(2.2,2.2);
+    -ms-transform: scale(2.2,2.2);
+    transform: scale(2.2,2.2);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 50%;
+    font-size: 35px;
+  }
+  #menu .mbutton{
+    font-size: 50px;
+  }
+  #hideScoreBut {
+    font-size: 45px;
+    bottom: 55%;
+    right: -30%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 70px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    top: 5%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 145%;
+    left: -25%;
+    top: 25%;
+  }
+  #tutorial {
+    width: 90%;
+    left: 8%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 1792px) and (min-height: 828px) and (hover: none) {/*IPAD PRO LAND*/
+  #board {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    top: 17%;
+    left: 15%;
+    
+  }
+  #background-interface {
+    height: 710px;
+    width: 700px;
+  }
+  #score {
+    display: block;
+    font-size: 45px;
+    top: 8px;
+  }
+  #buttons {
+    display: block;
+    bottom: 47%;
+    right: 22%;
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 2%;
+    font-size: 30px;
+  }
+  #menu .mbutton{
+    font-size: 50px;
+  }
+  #hideScoreBut {
+    font-size: 45px;
+    bottom: 30%;
+    right: 15%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 140px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    top: 5%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 125%;
+    left: -5%;
+    top: -10%;
+  }
+  #tutorial {
+    width: 54%;
+    left: 25%;
+    top: 2%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(1.3,1.3);
+    -o-transform: scale(1.3,1.3);
+    -moz-transform: scale(1.3,1.3);
+    -ms-transform: scale(1.3,1.3);
+    transform: scale(1.3,1.3);
+    position: absolute;
+    right: 18%;
+    bottom: 35%;
+  }
+}
+
+@media screen and (min-width: 1080px) and (min-height: 2160px) and (hover: none) {/*MOTO G6 PORTR*/
+  #board {
+    -webkit-transform: scale(1.9,1.9);
+    -o-transform: scale(1.9,1.9);
+    -moz-transform: scale(1.9,1.9);
+    -ms-transform: scale(1.9,1.9);
+    transform: scale(1.9,1.9);
+    top: 31%;
+    left: 24%;
+    
+  }
+  #background-interface {
+    height: 1100px;
+    width: 1000px;
+  }
+  #score {
+    display: block;
+    font-size: 80px;
+    top: 40px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 34%;
+    -webkit-transform: scale(2.9,2.9);
+    -o-transform: scale(2.9,2.9);
+    -moz-transform: scale(2.9,2.9);
+    -ms-transform: scale(2.9,2.9);
+    transform: scale(2.9,2.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 53%;
+    font-size: 40px;
+  }
+  #menu .mbutton{
+    font-size: 60px;
+  }
+  #hideScoreBut {
+    font-size: 70px;
+    bottom: 50%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 100px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(2.8,2.8);
+    -o-transform: scale(2.8,2.8);
+    -moz-transform: scale(2.8,2.8);
+    -ms-transform: scale(2.8,2.8);
+    transform: scale(2.8,2.8);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -30%;
+    top: 45%;
+  }
+  #tutorial {
+    width: 100%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2.4,2.4);
+    -o-transform: scale(2.4,2.4);
+    -moz-transform: scale(2.4,2.4);
+    -ms-transform: scale(2.4,2.4);
+    transform: scale(2.4,2.4);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2160px) and (min-height: 1080px) and (hover: none) {/*MOTO G6 LAND*/
+  #board {
+    -webkit-transform: scale(1.8,1.8);
+    -o-transform: scale(1.8,1.8);
+    -moz-transform: scale(1.8,1.8);
+    -ms-transform: scale(1.8,1.8);
+    transform: scale(1.8,1.8);
+    top: 27%;
+    left: 25%;
+    
+  }
+  #background-interface {
+    height: 1000px;
+    width: 1000px;
+  }
+  #score {
+    display: block;
+    font-size: 70px;
+    top: 20px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 18%;
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 2%;
+    right: 1%;
+    font-size: 50px;
+  }
+  #menu .mbutton{
+    font-size: 100px;
+  }
+  #hideScoreBut {
+    font-size: 80px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 190px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 95%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 50%;
+    left: 25%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2,2);
+    -o-transform: scale(2,2);
+    -moz-transform: scale(2,2);
+    -ms-transform: scale(2,2);
+    transform: scale(2,2);
+    position: absolute;
+    right: 15%;
+    bottom: 47%;
+  }
+}
+
+@media screen and (min-width: 1080px) and (min-height: 2340px) and (hover: none) {/*HONOR 8X PORTR*/
+  #board {
+    -webkit-transform: scale(1.9,1.9);
+    -o-transform: scale(1.9,1.9);
+    -moz-transform: scale(1.9,1.9);
+    -ms-transform: scale(1.9,1.9);
+    transform: scale(1.9,1.9);
+    top: 31%;
+    left: 24%;
+    
+  }
+  #background-interface {
+    height: 1100px;
+    width: 1000px;
+  }
+  #score {
+    display: block;
+    font-size: 100px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 34%;
+    -webkit-transform: scale(2.9,2.9);
+    -o-transform: scale(2.9,2.9);
+    -moz-transform: scale(2.9,2.9);
+    -ms-transform: scale(2.9,2.9);
+    transform: scale(2.9,2.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 50%;
+    font-size: 45px;
+  }
+  #menu .mbutton{
+    font-size: 60px;
+  }
+  #hideScoreBut {
+    font-size: 80px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 100px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(2.8,2.8);
+    -o-transform: scale(2.8,2.8);
+    -moz-transform: scale(2.8,2.8);
+    -ms-transform: scale(2.8,2.8);
+    transform: scale(2.8,2.8);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -30%;
+    top: 45%;
+  }
+  #tutorial {
+    width: 100%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2.4,2.4);
+    -o-transform: scale(2.4,2.4);
+    -moz-transform: scale(2.4,2.4);
+    -ms-transform: scale(2.4,2.4);
+    transform: scale(2.4,2.4);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2340px) and (min-height: 1080px) and (hover: none) {/*HONOR 8X LAND*/
+  #board {
+    -webkit-transform: scale(1.8,1.8);
+    -o-transform: scale(1.8,1.8);
+    -moz-transform: scale(1.8,1.8);
+    -ms-transform: scale(1.8,1.8);
+    transform: scale(1.8,1.8);
+    top: 27%;
+    left: 25%;
+    
+  }
+  #background-interface {
+    height: 1000px;
+    width: 1000px;
+  }
+  #score {
+    display: block;
+    font-size: 70px;
+    top: 20px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 21%;
+    -webkit-transform: scale(3.3,3.3);
+    -o-transform: scale(3.3,3.3);
+    -moz-transform: scale(3.3,3.3);
+    -ms-transform: scale(3.3,3.3);
+    transform: scale(3.3,3.3);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 2%;
+    right: 1%;
+    font-size: 55px;
+  }
+  #menu .mbutton{
+    font-size: 100px;
+  }
+  #hideScoreBut {
+    font-size: 100px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 200px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 95%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 47%;
+    left: 25%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2,2);
+    -o-transform: scale(2,2);
+    -moz-transform: scale(2,2);
+    -ms-transform: scale(2,2);
+    transform: scale(2,2);
+    position: absolute;
+    right: 15%;
+    bottom: 47%;
+  }
+}
+
+@media screen and (min-width: 1148px) and (min-height: 2480px) and (hover: none) {/*MATE XS ONE-SIDE PORTR*/
+  #board {
+    -webkit-transform: scale(2,2);
+    -o-transform: scale(2,2);
+    -moz-transform: scale(2,2);
+    -ms-transform: scale(2,2);
+    transform: scale(2,2);
+    top: 33%;
+    left: 26%;
+    
+  }
+  #background-interface {
+    height: 1200px;
+    width: 1100px;
+  }
+  #score {
+    display: block;
+    font-size: 100px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 34%;
+    -webkit-transform: scale(2.9,2.9);
+    -o-transform: scale(2.9,2.9);
+    -moz-transform: scale(2.9,2.9);
+    -ms-transform: scale(2.9,2.9);
+    transform: scale(2.9,2.9);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 50%;
+    font-size: 45px;
+  }
+  #menu .mbutton{
+    font-size: 60px;
+  }
+  #hideScoreBut {
+    font-size: 80px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 100px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(2.8,2.8);
+    -o-transform: scale(2.8,2.8);
+    -moz-transform: scale(2.8,2.8);
+    -ms-transform: scale(2.8,2.8);
+    transform: scale(2.8,2.8);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -30%;
+    top: 45%;
+  }
+  #tutorial {
+    width: 100%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2.4,2.4);
+    -o-transform: scale(2.4,2.4);
+    -moz-transform: scale(2.4,2.4);
+    -ms-transform: scale(2.4,2.4);
+    transform: scale(2.4,2.4);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2480px) and (min-height: 1148px) and (hover: none) {/*MATE XS ONE-SIDE LAND*/
+  #board {
+    -webkit-transform: scale(1.9,1.9);
+    -o-transform: scale(1.9,1.9);
+    -moz-transform: scale(1.9,1.9);
+    -ms-transform: scale(1.9,1.9);
+    transform: scale(1.9,1.9);
+    top: 28%;
+    left: 25%;
+    
+  }
+  #background-interface {
+    height: 1050px;
+    width: 1100px;
+  }
+  #score {
+    display: block;
+    font-size: 65px;
+    top: 15px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 21%;
+    -webkit-transform: scale(3.3,3.3);
+    -o-transform: scale(3.3,3.3);
+    -moz-transform: scale(3.3,3.3);
+    -ms-transform: scale(3.3,3.3);
+    transform: scale(3.3,3.3);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 2%;
+    right: 2%;
+    font-size: 55px;
+  }
+  #menu .mbutton{
+    font-size: 100px;
+  }
+  #hideScoreBut {
+    font-size: 100px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 200px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 95%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 47%;
+    left: 25%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2,2);
+    -o-transform: scale(2,2);
+    -moz-transform: scale(2,2);
+    -ms-transform: scale(2,2);
+    transform: scale(2,2);
+    position: absolute;
+    right: 15%;
+    bottom: 47%;
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-height: 2560px) and (hover: none) {/*LG DISPLAY PORTR*/
+  #board {
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    top: 34%;
+    left: 31%;
+    
+  }
+  #background-interface {
+    height: 1400px;
+    width: 1400px;
+  }
+  #score {
+    display: block;
+    font-size: 80px;
+    top: 30px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 36%;
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 56%;
+    font-size: 50px;
+  }
+  #menu .mbutton{
+    font-size: 80px;
+  }
+  #hideScoreBut {
+    font-size: 80px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 130px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -25%;
+    top: 35%;
+  }
+  #tutorial {
+    width: 100%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2560px) and (min-height: 1440px) and (hover: none) {/*LG DISPLAY LAND*/
+  #board {
+    -webkit-transform: scale(2.4,2.4);
+    -o-transform: scale(2.4,2.4);
+    -moz-transform: scale(2.4,2.4);
+    -ms-transform: scale(2.4,2.4);
+    transform: scale(2.4,2.4);
+    top: 34%;
+    left: 30%;
+    
+  }
+  #background-interface {
+    height: 1350px;
+    width: 1300px;
+  }
+  #score {
+    display: block;
+    font-size: 90px;
+    top: 30px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 17%;
+    -webkit-transform: scale(3.3,3.3);
+    -o-transform: scale(3.3,3.3);
+    -moz-transform: scale(3.3,3.3);
+    -ms-transform: scale(3.3,3.3);
+    transform: scale(3.3,3.3);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 3%;
+    font-size: 60px;
+  }
+  #menu .mbutton{
+    font-size: 140px;
+  }
+  #hideScoreBut {
+    font-size: 100px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 200px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 115%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 55%;
+    left: 25%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    position: absolute;
+    right: 15%;
+    bottom: 50%;
+  }
+}
+
+@media screen and (min-width: 1644px) and (min-height: 3840px) and (hover: none) {/*XPERIA 1 PORTR*/
+  #board {
+    -webkit-transform: scale(2.8,2.8);
+    -o-transform: scale(2.8,2.8);
+    -moz-transform: scale(2.8,2.8);
+    -ms-transform: scale(2.8,2.8);
+    transform: scale(2.8,2.8);
+    top: 38%;
+    left: 33%;
+    
+  }
+  #background-interface {
+    height: 1700px;
+    width: 2100px;
+  }
+  #score {
+    display: block;
+    font-size: 125px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 36%;
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 53%;
+    font-size: 70px;
+  }
+  #menu .mbutton{
+    font-size: 100px;
+  }
+  #hideScoreBut {
+    font-size: 90px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 150px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -25%;
+    top: 35%;
+  }
+  #tutorial {
+    width: 100%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 3840px) and (min-height: 1644px) and (hover: none) {/*XPERIA 1 LAND*/
+  #board {
+    -webkit-transform: scale(2.7,2.7);
+    -o-transform: scale(2.7,2.7);
+    -moz-transform: scale(2.7,2.7);
+    -ms-transform: scale(2.7,2.7);
+    transform: scale(2.7,2.7);
+    top: 36%;
+    left: 35%;
+    
+  }
+  #background-interface {
+    height: 1550px;
+    width: 1800px;
+  }
+  #score {
+    display: block;
+    font-size: 100px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 20%;
+    -webkit-transform: scale(4.2,4.2);
+    -o-transform: scale(4.2,4.2);
+    -moz-transform: scale(4.2,4.2);
+    -ms-transform: scale(4.2,4.2);
+    transform: scale(4.2,4.2);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 3%;
+    font-size: 70px;
+  }
+  #menu .mbutton{
+    font-size: 150px;
+  }
+  #hideScoreBut {
+    font-size: 120px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 300px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 85%;
+    left: 5%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 45%;
+    left: 30%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(2.5,2.5);
+    -o-transform: scale(2.5,2.5);
+    -moz-transform: scale(2.5,2.5);
+    -ms-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    position: absolute;
+    right: 15%;
+    bottom: 50%;
+  }
+}
+
+@media screen and (min-width: 2200px) and (min-height: 2480px) and (hover: none) {/*MATE XS DUAL-SIDE PORTR*/
+  #board {
+    -webkit-transform: scale(2.4,2.4);
+    -o-transform: scale(2.4,2.4);
+    -moz-transform: scale(2.4,2.4);
+    -ms-transform: scale(2.4,2.4);
+    transform: scale(2.4,2.4);
+    top: 29%;
+    left: 18%;
+    
+  }
+  #background-interface {
+    height: 1300px;
+    width: 2100px;
+  }
+  #score {
+    display: block;
+    font-size: 110px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 23%;
+    right: 40%;
+    -webkit-transform: scale(3.8,3.8);
+    -o-transform: scale(3.8,3.8);
+    -moz-transform: scale(3.8,3.8);
+    -ms-transform: scale(3.8,3.8);
+    transform: scale(3.8,3.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 54%;
+    font-size: 70px;
+  }
+  #menu .mbutton{
+    font-size: 110px;
+  }
+  #hideScoreBut {
+    font-size: 90px;
+    bottom: 50%;
+    right: -60%;
+  }
+  #endScore {
+    top: 25%;
+    font-size: 190px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -30%;
+    top: 40%;
+  }
+  #tutorial {
+    width: 98%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2480px) and (min-height: 2200px) and (hover: none) {/*MATE XS DUAL-SIDE LAND*/
+  #board {
+    -webkit-transform: scale(2.3,2.3);
+    -o-transform: scale(2.3,2.3);
+    -moz-transform: scale(2.3,2.3);
+    -ms-transform: scale(2.3,2.3);
+    transform: scale(2.3,2.3);
+    top: 33%;
+    left: 26%;
+    
+  }
+  #background-interface {
+    height: 1300px;
+    width: 1300px;
+  }
+  #score {
+    display: block;
+    font-size: 90px;
+    top: 30px;
+  }
+  #buttons {
+    display: block;
+    bottom: 25%;
+    right: 18%;
+    -webkit-transform: scale(3.3,3.3);
+    -o-transform: scale(3.3,3.3);
+    -moz-transform: scale(3.3,3.3);
+    -ms-transform: scale(3.3,3.3);
+    transform: scale(3.3,3.3);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 80px;
+  }
+  #menu .mbutton{
+    font-size: 150px;
+  }
+  #hideScoreBut {
+    font-size: 120px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 200px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(3.8,3.8);
+    -o-transform: scale(3.8,3.8);
+    -moz-transform: scale(3.8,3.8);
+    -ms-transform: scale(3.8,3.8);
+    transform: scale(3.8,3.8);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 145%;
+    left: -30%;
+    top: 30%;
+  }
+  #tutorial {
+    width: 85%;
+    left: 10%;
+    top: 10%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2160px) and (min-height: 3480px) and (hover: none) {/*XPERIA XZ PORTR*/
+  #board {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    top: 40%;
+    left: 37%;
+    
+  }
+  #background-interface {
+    height: 2000px;
+    width: 2100px;
+  }
+  #score {
+    display: block;
+    font-size: 125px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 40%;
+    -webkit-transform: scale(4.8,4.8);
+    -o-transform: scale(4.8,4.8);
+    -moz-transform: scale(4.8,4.8);
+    -ms-transform: scale(4.8,4.8);
+    transform: scale(4.8,4.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 58%;
+    font-size: 80px;
+  }
+  #menu .mbutton{
+    font-size: 110px;
+  }
+  #hideScoreBut {
+    font-size: 100px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 190px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -25%;
+    top: 35%;
+  }
+  #tutorial {
+    width: 98%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 3480px) and (min-height: 2160px) and (hover: none) {/*XPERIA XZ LAND*/
+  #board {
+    -webkit-transform: scale(3.4,3.4);
+    -o-transform: scale(3.4,3.4);
+    -moz-transform: scale(3.4,3.4);
+    -ms-transform: scale(3.4,3.4);
+    transform: scale(3.4,3.4);
+    top: 40%;
+    left: 35%;
+    
+  }
+  #background-interface {
+    height: 2050px;
+    width: 1800px;
+  }
+  #score {
+    display: block;
+    font-size: 120px;
+    top: 60px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 18%;
+    -webkit-transform: scale(4.2,4.2);
+    -o-transform: scale(4.2,4.2);
+    -moz-transform: scale(4.2,4.2);
+    -ms-transform: scale(4.2,4.2);
+    transform: scale(4.2,4.2);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 80px;
+  }
+  #menu .mbutton{
+    font-size: 150px;
+  }
+  #hideScoreBut {
+    font-size: 120px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 300px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 115%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 65%;
+    left: 20%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2160px) and (min-height: 3840px) and (hover: none) {/*XPERIA XZ2 PORTR*/
+  #board {
+    -webkit-transform: scale(3.8,3.8);
+    -o-transform: scale(3.8,3.8);
+    -moz-transform: scale(3.8,3.8);
+    -ms-transform: scale(3.8,3.8);
+    transform: scale(3.8,3.8);
+    top: 40%;
+    left: 37%;
+    
+  }
+  #background-interface {
+    height: 2200px;
+    width: 2100px;
+  }
+  #score {
+    display: block;
+    font-size: 145px;
+    top: 50px;
+  }
+  #buttons {
+    display: block;
+    bottom: 22%;
+    right: 40%;
+    -webkit-transform: scale(4.8,4.8);
+    -o-transform: scale(4.8,4.8);
+    -moz-transform: scale(4.8,4.8);
+    -ms-transform: scale(4.8,4.8);
+    transform: scale(4.8,4.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 58%;
+    font-size: 80px;
+  }
+  #menu .mbutton{
+    font-size: 110px;
+  }
+  #hideScoreBut {
+    font-size: 100px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 190px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -25%;
+    top: 35%;
+  }
+  #tutorial {
+    width: 98%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 3840px) and (min-height: 2160px) and (hover: none) {/*XPERIA XZ2 LAND*/
+  #board {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    top: 40%;
+    left: 35%;
+    
+  }
+  #background-interface {
+    height: 2050px;
+    width: 1950px;
+  }
+  #score {
+    display: block;
+    font-size: 120px;
+    top: 60px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 20%;
+    -webkit-transform: scale(5,5);
+    -o-transform: scale(5,5);
+    -moz-transform: scale(5,5);
+    -ms-transform: scale(5,5);
+    transform: scale(5,5);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 90px;
+  }
+  #menu .mbutton{
+    font-size: 150px;
+  }
+  #hideScoreBut {
+    font-size: 120px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 350px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 115%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 65%;
+    left: 20%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 2160px) and (min-height: 4320px) and (hover: none) {/*XPERIA H8541 PORTR*/
+  #board {
+    -webkit-transform: scale(3.8,3.8);
+    -o-transform: scale(3.8,3.8);
+    -moz-transform: scale(3.8,3.8);
+    -ms-transform: scale(3.8,3.8);
+    transform: scale(3.8,3.8);
+    top: 43%;
+    left: 37%;
+    
+  }
+  #background-interface {
+    height: 2400px;
+    width: 2100px;
+  }
+  #score {
+    display: block;
+    font-size: 185px;
+    top: 100px;
+  }
+  #buttons {
+    display: block;
+    bottom: 20%;
+    right: 35%;
+    -webkit-transform: scale(4.8,4.8);
+    -o-transform: scale(4.8,4.8);
+    -moz-transform: scale(4.8,4.8);
+    -ms-transform: scale(4.8,4.8);
+    transform: scale(4.8,4.8);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 55%;
+    font-size: 100px;
+  }
+  #menu .mbutton{
+    font-size: 110px;
+  }
+  #hideScoreBut {
+    font-size: 100px;
+    bottom: 45%;
+    right: -60%;
+  }
+  #endScore {
+    top: 30%;
+    font-size: 190px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 10%;
+    right: 15%;
+  }
+  #snakeLogo {
+    width: 150%;
+    left: -25%;
+    top: 35%;
+  }
+  #tutorial {
+    width: 98%;
+    left: 0%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
+
+@media screen and (min-width: 4320px) and (min-height: 2160px) and (hover: none) {/*XPERIA H8541 LAND*/
+  #board {
+    -webkit-transform: scale(3.5,3.5);
+    -o-transform: scale(3.5,3.5);
+    -moz-transform: scale(3.5,3.5);
+    -ms-transform: scale(3.5,3.5);
+    transform: scale(3.5,3.5);
+    top: 40%;
+    left: 35%;
+    
+  }
+  #background-interface {
+    height: 2050px;
+    width: 2100px;
+  }
+  #score {
+    display: block;
+    font-size: 120px;
+    top: 60px;
+  }
+  #buttons {
+    display: block;
+    bottom: 45%;
+    right: 20%;
+    -webkit-transform: scale(5,5);
+    -o-transform: scale(5,5);
+    -moz-transform: scale(5,5);
+    -ms-transform: scale(5,5);
+    transform: scale(5,5);
+  }
+  #debugOutp {
+    display: none;
+  }
+  #menuPause {
+    top: 5%;
+    font-size: 90px;
+  }
+  #menu .mbutton{
+    font-size: 150px;
+  }
+  #hideScoreBut {
+    font-size: 120px;
+    bottom: 30%;
+    right: 5%;
+  }
+  #endScore {
+    top: 20%;
+    font-size: 380px;
+    left: 10%;
+  }
+  #hoboSection {
+    -webkit-transform: scale(4,4);
+    -o-transform: scale(4,4);
+    -moz-transform: scale(4,4);
+    -ms-transform: scale(4,4);
+    transform: scale(4,4);
+    top: 15%;
+    right: 10%;
+  }
+  #snakeLogo {
+    width: 115%;
+    left: 0%;
+    top: 5%;
+  }
+  #tutorial {
+    width: 55%;
+    left: 25%;
+    top: 5%;
+  }
+  #toggleButt {
+    -webkit-transform: scale(3,3);
+    -o-transform: scale(3,3);
+    -moz-transform: scale(3,3);
+    -ms-transform: scale(3,3);
+    transform: scale(3,3);
+    position: absolute;
+    right: 15%;
+    bottom: 45%;
+  }
+}
