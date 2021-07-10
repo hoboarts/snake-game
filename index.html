@@ -15,7 +15,6 @@
   <link rel="prefetch" href="./img/stop.png"/>
   <link rel="prefetch" href="./img/snake.svg"/>
   <link rel="prefetch" href="./img/tutorial.svg"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 
 <body onkeydown="keyButDown(event,'1')">
@@ -32,18 +31,17 @@
       <div class="mbuttonsection">
         <a href="#" id="startButton" class="mbutton" onclick="hideShowMenu();autoMove()">Start</a>
         <a href="#" id="resumeButton" class="mbutton" onclick="pauseMenu(2)">Resume</a>
-        <!-- <a href="#" class="mbutton" onclick="pauseSw()">Pause</a> -->
         <a href="#" class="mbutton" onclick="toggleMenu()">Menu</a>
       </div>
     </div>
     <div id="secondMenuSection">
       <div id="toggleButt">
-        <input type="checkbox" onclick="sound.toggleMusic()" id="check" checked /><!--onclick="toggleMusic()-->
+        <input type="checkbox" onclick="sound.toggleMusic()" id="check" checked />
         <label for="check" class="btn">
           <i class="y"></i>
         </label>
         <p>MUSIC</p>
-        <input type="checkbox" onclick="sound.toggleSfx()" id="check2" checked /><!--onclick="toggleSfx()"-->
+        <input type="checkbox" onclick="sound.toggleSfx()" id="check2" checked />
         <label for="check2" class="btn">
           <i class="y"></i>
         </label>
@@ -92,7 +90,6 @@
   <script src="./script/sound.js"></script>
   <script src="./script/entity.js"></script>
   <script src="./script/main.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
 
 </html>
