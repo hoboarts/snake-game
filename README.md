@@ -1,4 +1,4 @@
-# Snake-Game
+# Snake-Game JS + CSS/HTML
 #
 
 ###  [GAME DEMO](https://hoboart.itch.io/old-school-snake)
